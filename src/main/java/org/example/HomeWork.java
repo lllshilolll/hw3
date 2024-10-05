@@ -1,11 +1,8 @@
 package org.example;
 
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class HomeWork {
 
@@ -55,18 +52,25 @@ public class HomeWork {
      * @see <a href="https://www.codewars.com/kata/545cedaa9943f7fe7b000048">https://www.codewars.com/kata/545cedaa9943f7fe7b000048</a>
      */
     public boolean check(String sentence) {
-        List<Character> charArray = Arrays.stream(IntStream.rangeClosed('A', 'Z')
-                        .mapToObj(c -> (char) c)
-                        .toArray(Character[]::new))
-                .collect(Collectors.toList());
+//        List<Character> charArray = Arrays.stream(IntStream.rangeClosed('A', 'Z')
+//                        .mapToObj(c -> (char) c)
+//                        .toArray(Character[]::new))
+//                .collect(Collectors.toList());
+//
+//        char[] test = sentence.toUpperCase().toCharArray();
+//
+//        Set<Character> newArray = Arrays.stream(IntStream.range(0, test.length)
+//                        .mapToObj(i -> test[i])
+//                        .toArray(Character[]::new))
+//                .collect(Collectors.toSet());
+//        return newArray.containsAll(charArray);
 
-        char[] test = sentence.toUpperCase().toCharArray();
-
-        Set<Character> newArray = Arrays.stream(IntStream.range(0, test.length)
-                        .mapToObj(i -> test[i])
-                        .toArray(Character[]::new))
-                .collect(Collectors.toSet());
-        return newArray.containsAll(charArray);
+        return 26 == sentence.toUpperCase()
+                .chars()
+                .mapToObj(c -> (char) c)
+                .filter(f -> f >= 'A' && f <= 'Z')
+                .distinct()
+                .count();
     }
 
     private LinkedList<Character> find(int i, String str) {
